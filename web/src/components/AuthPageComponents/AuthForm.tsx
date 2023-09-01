@@ -1,103 +1,37 @@
-import React from 'react'
-import {
-  Button,
-  Card,
-  CardHeader,
-  Input,
-  Tab,
-  Tabs,
-} from '@nextui-org/react'
-import { EyeFilledIcon } from './EyeFilledIcon'
-import { EyeSlashFilledIcon } from './EyeSlashFilledIcon'
+import { Loader2 } from "lucide-react"
+import { Button } from "../ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Input } from "../ui/input"
+import { Label } from "../ui/label"
+
 
 export default function AuthForm() {
-  const [isVisible, setIsVisible] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false)
 
-  const toggleVisibility = () => setIsVisible(!isVisible)
   return (
-    <Tabs disabledKeys={['register']} aria-label="Options">
-      <Tab key="login" title="Login">
-        <Card className="p-3 gap-3">
-          <CardHeader className="flex">
-            <div className="flex flex-col">
-              <p className="text-md font-semibold">Login</p>
-              <p className="text-small text-default-500">Login to continue</p>
-            </div>
-          </CardHeader>
-          <Input
-            isClearable
-            type="email"
-            label="Email"
-            variant="bordered"
-            placeholder="Enter your email"
-            onClear={() => console.log('input cleared')}
-            className="max-w-xs"
-          />
-          <Input
-            label="Password"
-            variant="bordered"
-            placeholder="Enter your password"
-            endContent={
-              <button
-                className="focus:outline-none"
-                type="button"
-                onClick={toggleVisibility}
-              >
-                {isVisible ? (
-                  <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-                ) : (
-                  <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-                )}
-              </button>
-            }
-            type={isVisible ? 'text' : 'password'}
-            className="max-w-xs"
-          />
-          <Button color='primary'>Login</Button>
-        </Card>
-      </Tab>
-      <Tab key="register" title="Register">
-        <Card className="p-3 gap-3">
-          <CardHeader className="flex">
-            <div className="flex flex-col">
-              <p className="text-md font-semibold">Register</p>
-              <p className="text-small text-default-500">
-                Create a new account
-              </p>
-            </div>
-          </CardHeader>
-          <Input
-            isClearable
-            type="email"
-            label="Email"
-            variant="bordered"
-            placeholder="Enter your email"
-            onClear={() => console.log('input cleared')}
-            className="max-w-xs"
-          />
-          <Input
-            label="Password"
-            variant="bordered"
-            placeholder="Enter your password"
-            endContent={
-              <button
-                className="focus:outline-none"
-                type="button"
-                onClick={toggleVisibility}
-              >
-                {isVisible ? (
-                  <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-                ) : (
-                  <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-                )}
-              </button>
-            }
-            type={isVisible ? 'text' : 'password'}
-            className="max-w-xs"
-          />
-          <Button color='primary'>Register</Button>
-        </Card>
-      </Tab>
-    </Tabs>
+    <Card>
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardDescription>
+          Enter your credentials and login to continue
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        <div className="grid gap-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" placeholder="m@example.com" />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="password">Password</Label>
+          <Input id="password" type="password" />
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button disabled={isLoading} className="w-full">
+        {isLoading &&  <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          Login
+        </Button>
+      </CardFooter>
+    </Card>
   )
 }

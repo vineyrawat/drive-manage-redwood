@@ -10,6 +10,10 @@ import redwood from '@redwoodjs/vite'
 
 const viteConfig: UserConfig = {
   plugins: [redwood()],
+  resolve: {
+    alias: {
+    },
+  },
 }
 
 export default defineConfig(viteConfig)
