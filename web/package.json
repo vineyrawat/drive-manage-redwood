@@ -21,6 +21,7 @@
     "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
+    "@redwoodjs/auth-dbauth-web": "6.1.0",
     "@redwoodjs/forms": "6.1.0",
     "@redwoodjs/router": "6.1.0",
     "@redwoodjs/web": "6.1.0",

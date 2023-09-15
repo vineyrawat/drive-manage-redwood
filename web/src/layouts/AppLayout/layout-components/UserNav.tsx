@@ -1,8 +1,21 @@
-import { Avatar, AvatarFallback, AvatarImage } from "src/components/ui/avatar";
-import { Button } from "src/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from "src/components/ui/dropdown-menu";
+import { useAuth } from 'src/auth'
+import { Avatar, AvatarFallback, AvatarImage } from 'src/components/ui/avatar'
+import { Button } from 'src/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from 'src/components/ui/dropdown-menu'
 
 export function UserNav() {
+  const { currentUser, logOut } = useAuth()
+  console.log(currentUser)
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -18,7 +31,7 @@ export function UserNav() {
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">shadcn</p>
             <p className="text-xs leading-none text-muted-foreground">
-              m@example.com
+              vineyrawa@yahoo.com
             </p>
           </div>
         </DropdownMenuLabel>
@@ -39,7 +52,7 @@ export function UserNav() {
           <DropdownMenuItem>New Team</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={logOut}>
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>

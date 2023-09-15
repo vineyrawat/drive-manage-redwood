@@ -1,4 +1,5 @@
 import { MetaTags } from '@redwoodjs/web'
+
 import { Button } from 'src/components/ui/button'
 import {
   Card,
@@ -145,7 +146,9 @@ const AppPage = () => {
               <CardHeader>
                 <CardTitle>Policies Sold Trends</CardTitle>
               </CardHeader>
-              <CardContent className="pl-2"><Overview /></CardContent>
+              <CardContent className="pl-2">
+                <Overview />
+              </CardContent>
             </Card>
             <Card className="col-span-3">
               <CardHeader>
@@ -154,7 +157,9 @@ const AppPage = () => {
                   You made 265 sales this month.
                 </CardDescription>
               </CardHeader>
-              <CardContent><RecentSales /></CardContent>
+              <CardContent>
+                <RecentSales />
+              </CardContent>
             </Card>
           </div>
         </TabsContent>

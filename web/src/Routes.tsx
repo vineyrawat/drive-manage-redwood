@@ -8,16 +8,23 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route, Set } from '@redwoodjs/router'
+import { Private } from '@redwoodjs/router'
+
+import { useAuth } from './auth'
 import AppLayout from './layouts/AppLayout/AppLayout'
 
 const Routes = () => {
   return (
-    <Router>
-
+    <Router useAuth={useAuth}>
+      <Route path="/signup" page={SignupPage} name="signup" />
+      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       <Route path="/" page={AuthPage} name="auth" />
-      <Set wrap={AppLayout}>
-        <Route path="/app" page={AppPage} name="app" />
-      </Set>
+      <Private unauthenticated="auth">
+        <Set wrap={AppLayout}>
+          <Route path="/app" page={AppPage} name="app" />
+        </Set>
+      </Private>
       <Route notfound page={NotFoundPage} />
     </Router>
   )
